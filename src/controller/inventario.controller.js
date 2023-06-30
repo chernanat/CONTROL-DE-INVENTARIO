@@ -15,7 +15,16 @@ const index = (req, res) => {
 };
 
 // en este metodo almacenaremos un item
-const saveItem = () => {};
+const saveItem = (req,res) => {
+    const data = req.body;
+    req.getConnection((err, conn)=>{
+        conn.query('INSERT INTO productos set ?', [data], (err, producto)=>{
+            console.log(producto);
+            if(err) console.log(err);
+        });
+        res.redirect('/')
+    })
+};
 
 //En este metodo actualizaremos un item del inventario
 const updateItem = () => {};
