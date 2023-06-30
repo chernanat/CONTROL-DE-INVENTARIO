@@ -2,7 +2,7 @@ const express = require("express");
 
 //aqui listaremos los articulos de cada inventario
 const index = (req,res) => {
-    res.send('hola mundo')
+    res.render('pages/index');
 };
 
 // en este metodo almacenaremos un item

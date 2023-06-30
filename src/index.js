@@ -7,11 +7,13 @@ const inventarioRoutes = require("./routes/Inventario.routes");
 const app = express();
 
 //settings
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+//middlewares
 app.use(morgan("dev"));
 app.use(express.urlencoded({ extended: false }));
 app.use(inventarioRoutes);
-app.set("view engine", "ejs");
-app.set("/views", path.join(__dirname, "/views"));
 
 //db connection
 const db = mysql.createConnection({
