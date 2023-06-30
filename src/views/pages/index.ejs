@@ -1,9 +1,63 @@
 <%- include('../layouts/header'); %>
-<%- include('../layouts/nav'); %>
+    <%- include('../layouts/nav'); %>
+    <%= data %>
+        <div class="container">
+            <div class="row mt-2">
+                <div class="col-md-5">
+                    <h2 class="mt-3">Ingresar un producto nuevo</h2>
 
-<h1>Inventario</h1>
-
-<%- include('./form'); %>
-
-
+                    <form class="form-control mt-2" action="/save" method="post">
+                        <div class="container">
+                            <div>
+                                <label class="form-label" for="">Codigo del Producto:</label>
+                                <input class="form-control" type="text" name="codigo">
+                            </div>
+                            <div>
+                                <label class="form-label" for="">Nombre del Producto:</label>
+                                <input class="form-control" type="text" name="nombre">
+                            </div>
+                            <div>
+                                <label class="form-label" for="">Precio del Producto:</label>
+                                <input class="form-control" type="number" name="precio">
+                            </div>
+                            <div>
+                                <label class="form-label" for="">Cantidad:</label>
+                                <input class="form-control" type="number" name="cantidad">
+                            </div>
+                            <div class="d-grid gap-2 mt-2">
+                                <button class="btn btn-lg btn-primary" type="submit">Guardar!</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-7">
+                    <h2 class="mt-3">Productos</h3>
+                        <table class="table table-hover-bordered">
+                            <thead>
+                                <tr class="table-info">
+                                    <th>Codigo</th>
+                                    <th>Nombre</th>
+                                    <th>Cantidad</th>
+                                    <th>Precio</th>
+                                    <th>Total</th>
+                                    <th>Operaciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2</td>
+                                    <td>3</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                                    <td>6</td>
+                                    <td>
+                                        <a class="btn btn-info" href="">EDITAR</a>
+                                        <a class="btn btn-danger" href="">ELIMINAR</a>
+                                    </td>
+                                    </td>
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
 <%- include('../layouts/footer'); %>
