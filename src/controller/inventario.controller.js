@@ -1,5 +1,3 @@
-const express = require("express");
-
 //aqui listaremos los articulos de cada inventario
 const index = (req, res) => {
   const query = "SELECT * FROM productos";
@@ -26,7 +24,7 @@ const saveItem = (req,res) => {
     })
 };
 
-//primero obtendremos el item 
+//primero obtendremos el item antes de actualizar
 const getItem = (req,res)=>{
   const id = req.params.id;
   req.getConnection((err, conn)=>{
@@ -39,7 +37,15 @@ const getItem = (req,res)=>{
 };
 
 //En este metodo actualizaremos un item del inventario
-const updateItem = () => {};
+const updateItem = (req,res) => {
+  const id = req.params.id;
+  const data = req.body;
+  req.getConnection((err, conn)=>{
+      conn.query('UPDATE productos set ? WHERE codigo = ?', [data, id], (err, rows)=>{
+      res.redirect('/')
+    })
+  })
+};
 
 //En este metodo borraremos un item del inventario
 const deleteItem = (req,res) => {
