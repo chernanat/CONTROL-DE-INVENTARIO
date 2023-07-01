@@ -19,7 +19,7 @@ const saveItem = (req,res) => {
     const data = req.body;
     req.getConnection((err, conn)=>{
         conn.query('INSERT INTO productos set ?', [data], (err, producto)=>{
-            console.log(producto);
+            // console.log(producto);
             if(err) console.log(err);
         });
         res.redirect('/')
@@ -30,7 +30,14 @@ const saveItem = (req,res) => {
 const updateItem = () => {};
 
 //En este metodo borraremos un item del inventario
-const deleteItem = () => {};
+const deleteItem = (req,res) => {
+    const id = req.params.id;
+    req.getConnection((err, conn)=>{
+        conn.query('DELETE FROM productos WHERE codigo = ?', [id], (err, eliminated)=>{
+            res.redirect('/');
+        })
+    })
+};
 
 module.exports = {
   index,

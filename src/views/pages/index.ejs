@@ -34,7 +34,7 @@
                         <table class="table table-hover">
                             <thead>
                                 <tr class="table-info">
-                                    <th>Codigo</th>
+                                    <th>#</th>
                                     <th>Nombre</th>
                                     <th>Cantidad</th>
                                     <th>Precio</th>
@@ -46,7 +46,7 @@
                                 <% if (data){ %>
                                     <% for(let i=0; i<data.length;i++){ %>
                                 <tr>
-                                    <td><%= data[i].codigo %></td>
+                                    <td><%= i + 1 %></td>
                                     <td><%= data[i].nombre %></td>
                                     <td><%= data[i].cantidad %></td>
                                     <td><%= data[i].precio %></td>

@@ -13,6 +13,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 //middlewares
 app.use(morgan("dev"));
+//conexion a la db
 app.use(myConnection(mysql,{
   host: "localhost",
   user: "root",
@@ -23,14 +24,6 @@ app.use(myConnection(mysql,{
 
 app.use(express.urlencoded({ extended: false }));
 app.use(inventarioRoutes);
-
-// //db connection
-// const db = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "",
-//   database: "inventario",
-// });
 
 app.listen(PORT, () => {
   console.log(`ESCUCHANDO EN EL PUERTO : ${PORT}`);
