@@ -1,3 +1,5 @@
+const Swal = require('sweetalert2')
+
 //aqui listaremos los articulos de cada inventario
 const index = (req, res) => {
   const query = "SELECT * FROM productos";
@@ -17,8 +19,16 @@ const saveItem = (req,res) => {
     const data = req.body;
     req.getConnection((err, conn)=>{
         conn.query('INSERT INTO productos set ?', [data], (err, producto)=>{
-            // console.log(producto);
-            if(err) s
+            if(err){
+              if(err.code == 'ER_DUP_ENTRY'){
+                Swal.fire({
+                  title: 'Error!',
+                  text: 'ESTE CODIGO YA EXISTE',
+                  icon: 'error',
+                  confirmButtonText: 'CONTINUAR'
+                });
+              }
+            }
         });
         res.redirect('/')
     })
