@@ -26,6 +26,18 @@ const saveItem = (req,res) => {
     })
 };
 
+//primero obtendremos el item 
+const getItem = (req,res)=>{
+  const id = req.params.id;
+  req.getConnection((err, conn)=>{
+    conn.query('SELECT * FROM productos WHERE codigo = ?', [id], (err, producto)=>{
+      res.render('pages/edit', {
+        item: producto
+      });
+    });
+  });
+};
+
 //En este metodo actualizaremos un item del inventario
 const updateItem = () => {};
 
@@ -42,6 +54,7 @@ const deleteItem = (req,res) => {
 module.exports = {
   index,
   saveItem,
+  getItem,
   updateItem,
   deleteItem,
 };
