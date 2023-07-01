@@ -6,7 +6,10 @@ const { PORT } = require("./config");
 const inventarioRoutes = require("./routes/Inventario.routes");
 const myConnection = require('express-myconnection');
 const app = express();
-
+// const DataTable = require('datatables.net-dt')
+// import DataTable from 'datatables.net-dt';
+ 
+// let table = new DataTable('#myTable');
 //settings
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
