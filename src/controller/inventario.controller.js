@@ -6,9 +6,15 @@ const index = (req, res) => {
   const query = "SELECT * FROM productos";
   req.getConnection((err, conn) => {
     conn.query(query, (err, products) => {
+      let total = 0;
+      let cantidad = 0;
+      for(let i=0; i<products.length;i++){
+        total = (total + products[i].cantidad*products[i].precio);
+        cantidad = cantidad + products[i].cantidad;
+      }
       if (err) console.log(err);
       res.render("pages/index", {
-        data: products,
+        data: products, data2: total, data3: cantidad
       });
     });
     if (err) console.log(err);
