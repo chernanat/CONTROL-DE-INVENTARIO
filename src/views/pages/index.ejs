@@ -29,8 +29,8 @@
                         </div>
                     </form>
                     <% if (data2) { %>
-                        <h3 class="mt-3"><b>Valor Total: <%= Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(data2) %> </b></h3>
-                        <h3><b>Cantidad Total: <%= data3 %> </b></h3>
+                        <h4 class="mt-3 text-secondary-emphasis"><b>Total: <%= Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP' }).format(data2) %> </b></h4>
+                        <h4><b>Cantidad: <%= data3 %> </b></h4>
                     <% } %>
                 </div>
                 <div class="col-md-7">
