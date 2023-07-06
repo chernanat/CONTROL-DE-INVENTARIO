@@ -1,7 +1,7 @@
 PORT = 3000;
 HOST = 'localhost'
 USER = 'root',
-PASSWORD = "",
+PASSWORD = '',
 DB_PORT = 3306,
 DATABASE_NAME = 'inventario'
 
