@@ -2,7 +2,6 @@ const Swal = require("sweetalert2");
 
 //aqui listaremos los articulos de cada inventario
 const index = (req, res) => {
-  
   const query = "SELECT * FROM productos";
   req.getConnection((err, conn) => {
     conn.query(query, (err, products) => {
@@ -29,13 +28,17 @@ const saveItem = (req, res) => {
       if (err) {
         console.log(err);
         if (err.code == "ER_DUP_ENTRY") {
-          console.log('hola');
-          Swal.fire({
+          console.log('error del duplicado');
+          const err_data = {
             title: 'Condición Cumplida',
             text: 'Se ha cumplido la condición específica.',
             icon: 'success',
             confirmButtonText: '¡Entendido!'
+          }
+          res.redirect("/", {
+            err: err_data.title
           });
+          // res.render("pages/index", {err: err_data})
         }
       }
     });
