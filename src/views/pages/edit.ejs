@@ -2,7 +2,7 @@
     <%- include('../layouts/nav'); %>
     <div class="container">
         <h3 class="mt-3">Editar <%= item[0].nombre %></h3>
-        <form class="form-control mt-2" action="/edit/<%= item[0].codigo %>" method="post">
+        <form class="form-control mt-2" action="/edit/<%= item[0].id %>" method="post">
                 <div>
                     <label class="form-label" for="">Nombre del Producto:</label>
                     <input class="form-control" type="text" name="nombre" value="<%= item[0].nombre %>">

@@ -7,13 +7,15 @@ const index = (req, res) => {
     conn.query(query, (err, products) => {
       let total = 0;
       let cantidad = 0;
-      for(let i=0; i<products.length;i++){
-        total = (total + products[i].cantidad*products[i].precio);
+      for (let i = 0; i < products.length; i++) {
+        total = total + products[i].cantidad * products[i].precio;
         cantidad = cantidad + products[i].cantidad;
       }
       if (err) console.log(err);
       res.render("pages/index", {
-        data: products, data2: total, data3: cantidad
+        data: products,
+        data2: total,
+        data3: cantidad,
       });
     });
     if (err) console.log(err);
@@ -28,15 +30,15 @@ const saveItem = (req, res) => {
       if (err) {
         console.log(err);
         if (err.code == "ER_DUP_ENTRY") {
-          console.log('error del duplicado');
+          console.log("error del duplicado");
           const err_data = {
-            title: 'Condición Cumplida',
-            text: 'Se ha cumplido la condición específica.',
-            icon: 'success',
-            confirmButtonText: '¡Entendido!'
-          }
+            title: "Condición Cumplida",
+            text: "Se ha cumplido la condición específica.",
+            icon: "success",
+            confirmButtonText: "¡Entendido!",
+          };
           res.redirect("/", {
-            err: err_data.title
+            err: err_data.title,
           });
           // res.render("pages/index", {err: err_data})
         }
@@ -51,7 +53,7 @@ const getItem = (req, res) => {
   const id = req.params.id;
   req.getConnection((err, conn) => {
     conn.query(
-      "SELECT * FROM productos WHERE codigo = ?",
+      "SELECT * FROM productos WHERE id = ?",
       [id],
       (err, producto) => {
         res.render("pages/edit", {
@@ -68,7 +70,7 @@ const updateItem = (req, res) => {
   const data = req.body;
   req.getConnection((err, conn) => {
     conn.query(
-      "UPDATE productos set ? WHERE codigo = ?",
+      "UPDATE productos set ? WHERE id = ?",
       [data, id],
       (err, rows) => {
         res.redirect("/");
@@ -82,7 +84,7 @@ const deleteItem = (req, res) => {
   const id = req.params.id;
   req.getConnection((err, conn) => {
     conn.query(
-      "DELETE FROM productos WHERE codigo = ?",
+      "DELETE FROM productos WHERE id = ?",
       [id],
       (err, eliminated) => {
         res.redirect("/");
