@@ -4,6 +4,7 @@ const path = require("path");
 const mysql = require("mysql");
 const { PORT, HOST, USER, PASSWORD, DB_PORT, DATABASE_NAME } = require("./config");
 const inventarioRoutes = require("./routes/Inventario.routes");
+const usuarioRoutes = require('./routes/Usuario.routes')
 const myConnection = require('express-myconnection');
 const app = express();
  
@@ -23,7 +24,9 @@ app.use(myConnection(mysql,{
 }, 'single'));
 
 app.use(express.urlencoded({ extended: false }));
+//se deben importar las rutas
 app.use(inventarioRoutes);
+app.use(usuarioRoutes);
 
 app.listen(PORT, () => {
   console.log(`ESCUCHANDO EN EL PUERTO : ${PORT}`);

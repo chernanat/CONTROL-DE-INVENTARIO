@@ -1,0 +1,20 @@
+<%- include('../layouts/header'); %>
+    <%- include('../layouts/nav'); %>
+    <div class="container">
+        <h3 class="mt-3">Editar <%= cliente[0].nombre %></h3>
+        <form class="form-control mt-2" action="/edit/user/<%= cliente[0].id %>" method="post">
+                <div>
+                    <label class="form-label" for="">Nombre:</label>
+                    <input class="form-control" type="text" name="nombre" value="<%= cliente[0].nombre %>">
+                </div>
+                <div>
+                    <label class="form-label" for="">Apellido:</label>
+                    <input class="form-control" type="text" name="apellido" value="<%= cliente[0].apellido %>">
+                </div>
+                <div class="d-grid gap-2 mt-2">
+                    <button class="btn btn-info" type="submit">Actualizar</button>
+                    <a class="btn btn-danger" href="/users">Cancelar</a>
+                </div>
+        </form>
+    </div>
+<%- include('../layouts/footer'); %>

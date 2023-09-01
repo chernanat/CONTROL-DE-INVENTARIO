@@ -31,12 +31,6 @@ const saveItem = (req, res) => {
         console.log(err);
         if (err.code == "ER_DUP_ENTRY") {
           console.log("error del duplicado");
-          const err_data = {
-            title: "Condición Cumplida",
-            text: "Se ha cumplido la condición específica.",
-            icon: "success",
-            confirmButtonText: "¡Entendido!",
-          };
           res.redirect("/", {
             err: err_data.title,
           });
